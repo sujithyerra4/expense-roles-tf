@@ -1,0 +1,7 @@
+- name: Restart backend
+  tags:
+  - deployment
+  ansible.builtin.service:
+    daemon-reload: true
+    state: restarted
+    name: backend

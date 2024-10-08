@@ -1,0 +1,7 @@
+- name: configure db
+  hosts: db
+  vars_files:
+  - /var/expense/credentials_mysql.yaml
+  become: yes
+  roles:
+  - mysql

@@ -1,0 +1,16 @@
+- name: remove existing app locatiion
+  ansible.builtin.file:
+    path: "{{ app_loc }}"
+    state: absent
+  ignore_errors: true
+
+- name: creating app directory
+  ansible.builtin.file:
+    path: "{{ app_loc }}"
+    state: directory
+
+- name: download the code
+  ansible.builtin.unarchive:
+    src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
+    dest: "{{ app_loc }}"
+    remote_src: yes
