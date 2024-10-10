@@ -70,9 +70,12 @@
     state: import
 
 
-# - name: reload the service
-#   ansible.builtin.service:
-#     daemon-reload: true
-#     state: restarted
-#     name: backend
-#     enabled: true
+- name: Restart backend
+  tags:
+  - deployment
+  ansible.builtin.service:
+    daemon-reload: true
+    state: restarted
+    name: backend
+    enabled: true
+    
